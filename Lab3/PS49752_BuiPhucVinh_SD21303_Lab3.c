@@ -4,36 +4,36 @@
 int main()
 {
     /*# Bài 1: XÂY DỰNG CHƯƠNG TRÌNH TÍNH HỌC LỰC
-    Input: Nhập vào dtb của Sinh Viên từ 0 đến 10
-    Output: Xuất ra màn hình Học lực của Sinh Viên
-    Nếu dtb>=9 -> Học Lực Xuất Sắc
-    Nếu dtb>=8 và dtn<9 -> Học Lực Giỏi
-    Nếu dtb>=6.5 và dtn<8 -> Học Lực Khá
-    Nếu dtb>=5 và dtn<6.5 -> Học Lực Trung Bình
-    Ngược lại Học Lực Yếu*/
-    // double dtb;
-    // printf("\nNhap diem trung binh:");
-    // scanf("%lf", &dtb);
-    // if (dtb >= 9)
-    // {
-    //     printf("Hoc luc xuat sac");
-    // }
-    // else if (dtb >= 8)
-    // {
-    //     printf("Hoc luc gioi");
-    // }
-    // else if (dtb >= 6.5)
-    // {
-    //     printf("Hoc luc kha");
-    // }
-    // else if (dtb >= 5)
-    // {
-    //     printf("Hoc luc trung binh");
-    // }
-    // else
-    // {
-    //     printf("Hoc luc yeu");
-    // }
+    // Input: Nhập vào dtb của Sinh Viên từ 0 đến 10
+    // Output: Xuất ra màn hình Học lực của Sinh Viên
+    // Nếu dtb>=9 -> Học Lực Xuất Sắc
+    // Nếu dtb>=8 và dtn<9 -> Học Lực Giỏi
+    // Nếu dtb>=6.5 và dtn<8 -> Học Lực Khá
+    // Nếu dtb>=5 và dtn<6.5 -> Học Lực Trung Bình
+    // Ngược lại Học Lực Yếu*/
+    double dtb;
+    printf("\nNhap diem trung binh:");
+    scanf("%lf", &dtb);
+    if (dtb >= 9)
+    {
+        printf("Hoc luc xuat sac");
+    }
+    else if (dtb >= 8)
+    {
+        printf("Hoc luc gioi");
+    }
+    else if (dtb >= 6.5)
+    {
+        printf("Hoc luc kha");
+    }
+    else if (dtb >= 5)
+    {
+        printf("Hoc luc trung binh");
+    }
+    else
+    {
+        printf("Hoc luc yeu");
+    }
 
     /*# Bài 2: Giải phương trình bậc nhất
     Phương trình có dạng ax + b = 0
@@ -47,25 +47,25 @@ int main()
     Ngược lại
        Phương trình có 1 nghiệm: x=-b/a*/
     float a, b, c, x;
-    // printf("\nGiai phuong trinh bat nhat ax + b = 0."
-    //        "\nNhap a va b:");
-    // scanf("%f %f", &a, &b);
-    // if (a == 0)
-    // {
-    //     if (b == 0)
-    //     {
-    //         printf("PTVSN.");
-    //     }
-    //     else
-    //     {
-    //         printf("PTVN.");
-    //     }
-    // }
-    // else
-    // {
-    //     x = (-b) / a;
-    //     printf("PT co nghiem x=-b/a=%.2f", x);
-    // }
+    printf("\nGiai phuong trinh bat nhat ax + b = 0."
+           "\nNhap a va b:");
+    scanf("%f %f", &a, &b);
+    if (a == 0)
+    {
+        if (b == 0)
+        {
+            printf("PTVSN.");
+        }
+        else
+        {
+            printf("PTVN.");
+        }
+    }
+    else
+    {
+        x = (-b) / a;
+        printf("PT co nghiem x=-b/a=%.2f", x);
+    }
 
     /*# Bài 3: Giải Phương trình bậc 2
     Phương trình có dạng: ax2 + bx + c = 0
@@ -83,49 +83,49 @@ int main()
         Phương trình có 2 nghiệm riêng biệt
         X1 = (-b + căn(delta))/(2*a)
         X2 = (-b – căn(delta))/(2*a)*/
-    // float delta;
-    // printf("\nPhương trình có dạng: ax2 + bx + c = 0"
-    //        "\nNhap a b c:");
-    // scanf("%f %f %f", &a, &b, &c);
-    // if (a == 0)
-    // {
-    //     if (b == 0)
-    //     {
-    //         if (c == 0)
-    //         {
-    //             printf("PTVSN.");
-    //         }
-    //         else
-    //         {
-    //             printf("PTVN.");
-    //         }
-    //     }
-    //     else
-    //     {
-    //         x = (-c) / b;
-    //         printf("PT co nghiem x=-c/b=%.2f", x);
-    //     }
-    // }
-    // else
-    // {
-    //     delta = pow(b, 2) - 4 * a * c;
-    //     printf("Delta = %.2f\n", delta);
-    //     if (delta < 0)
-    //     {
-    //         printf("PTVN");
-    //     }
-    //     else if (delta == 0)
-    //     {
-    //         printf("Phương trình có nghiệm kép x = -b/(2*a)=%.2f",
-    //                (-b) / (2 * a));
-    //     }
-    //     else
-    //     {
-    //         printf(" Phương trình có 2 nghiệm riêng biệt."
-    //                "\nX1=%.2f\nX2=%.2f",
-    //                ((-b + sqrtf(delta)) / (2 * a)), ((-b - sqrtf(delta)) / (2 * a)));
-    //     }
-    // }
+    float delta;
+    printf("\nPhương trình có dạng: ax2 + bx + c = 0"
+           "\nNhap a b c:");
+    scanf("%f %f %f", &a, &b, &c);
+    if (a == 0)
+    {
+        if (b == 0)
+        {
+            if (c == 0)
+            {
+                printf("PTVSN.");
+            }
+            else
+            {
+                printf("PTVN.");
+            }
+        }
+        else
+        {
+            x = (-c) / b;
+            printf("PT co nghiem x=-c/b=%.2f", x);
+        }
+    }
+    else
+    {
+        delta = pow(b, 2) - 4 * a * c;
+        printf("Delta = %.2f\n", delta);
+        if (delta < 0)
+        {
+            printf("PTVN");
+        }
+        else if (delta == 0)
+        {
+            printf("Phương trình có nghiệm kép x = -b/(2*a)=%.2f",
+                   (-b) / (2 * a));
+        }
+        else
+        {
+            printf(" Phương trình có 2 nghiệm riêng biệt."
+                   "\nX1=%.2f\nX2=%.2f",
+                   ((-b + sqrtf(delta)) / (2 * a)), ((-b - sqrtf(delta)) / (2 * a)));
+        }
+    }
 
     /*BÀI 4: XÂY DỰNG CHƯƠNG TRÌNH TÍNH TIỀN ĐIỆN
     Input: Nhập vào số điện tiêu thụ hàng tháng
