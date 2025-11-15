@@ -196,7 +196,7 @@ Bậc 6   Cho kWh từ 401 trở lên  2.927 */
         case 0:
         {
             printf("Bye bye!");
-            break;
+            exit(0);
         }
         default:
             printf("Chon sai roi bo oi!");
