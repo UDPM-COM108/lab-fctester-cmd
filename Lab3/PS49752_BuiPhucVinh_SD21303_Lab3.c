@@ -165,6 +165,5 @@ int main()
     {
         printf("Bậc 6: %.4f", dtt * 2.927);
     }
-
     return 0;
 }
