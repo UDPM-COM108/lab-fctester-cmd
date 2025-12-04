@@ -10,7 +10,7 @@ void bai_2();
 void main(){
     bai1();
     bai2();
-    bai3();
+    bai3_2();
 }
 
 void bai1(){
@@ -74,23 +74,20 @@ void bai3(){
 }
 
 void bai3_2(){
-    char s[100], tmp[100], c;
-    int count = 1;
+    char s[100], c;
+    int count;;
     printf ("Input string:");
     if(fgets(s, sizeof(s), stdin) != NULL){
         s[strcspn(s, "\n")] = '\0';
     }
-    for (int i =1; i< sizeof(s); i++){
-        c = s[i-1];
-        for (int j = 1; j < sizeof(s); j++)
-        {
-            if (strcmp(c,s[j]) == 0) {
-                count++;
-            }
+    c=s[0];
+    for (int i =1; i< strlen(s);){
+        c=s[i];
+        count=1;
+        while (i + count < len && s[i + count] == c) {
+            count++;
         }
-        if (count > 2) {
-            tmp[i-1] = c;
-        }
-        count = 1;
+        printf("%c%d", c, count);
+        i+= count;
     }
 }
