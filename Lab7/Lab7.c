@@ -5,7 +5,25 @@
 void bai1();
 void bai2();
 void bai3();
-void bai_2();
+void bai3_2(){
+    char s[100], c;
+    int count;;
+    printf ("Input string:");
+    getchar();
+    if(fgets(s, sizeof(s), stdin) != NULL){
+        s[strcspn(s, "\n")] = '\0';
+    }
+    c=s[0];
+    for (int i =1; i< strlen(s);){
+        c=s[i];
+        count=1;
+        while (i + count < strlen(s) && s[i + count] == c) {
+            count++;
+        }
+        printf("%c%d", c, count);
+        i+= count;
+    }
+}
 
 void main(){
     bai1();
@@ -73,21 +91,21 @@ void bai3(){
     }
 }
 
-void bai3_2(){
-    char s[100], c;
-    int count;;
-    printf ("Input string:");
-    if(fgets(s, sizeof(s), stdin) != NULL){
-        s[strcspn(s, "\n")] = '\0';
-    }
-    c=s[0];
-    for (int i =1; i< strlen(s);){
-        c=s[i];
-        count=1;
-        while (i + count < len && s[i + count] == c) {
-            count++;
-        }
-        printf("%c%d", c, count);
-        i+= count;
-    }
-}
+// void bai3_2(){
+//     char s[100], c;
+//     int count;;
+//     printf ("Input string:");
+//     if(fgets(s, sizeof(s), stdin) != NULL){
+//         s[strcspn(s, "\n")] = '\0';
+//     }
+//     c=s[0];
+//     for (int i =1; i< strlen(s);){
+//         c=s[i];
+//         count=1;
+//         while (i + count < strlen(s) && s[i + count] == c) {
+//             count++;
+//         }
+//         printf("%c%d", c, count);
+//         i+= count;
+//     }
+// }
