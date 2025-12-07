@@ -12,6 +12,8 @@ void test();
 void bai2();
 // B3: Chương trình tính tiền cho quán Karaoke
 void bai3();
+// B4: Tính tiền điện
+void bai4();
 
 int main()
 {
@@ -37,7 +39,8 @@ int main()
             //printf("\nNhap vao so gio hat: ");
             break;
         case 4:
-            printf("\nNhap vao so kwh tieu thu: ");
+            bai4();
+            //printf("\nNhap vao so kwh tieu thu: ");
             break;
         case 5:
             printf("\nNhap vao so tien can doi: ");
@@ -225,4 +228,40 @@ void bai3(){
         tongTien=tongTien*0.9;
     }
     printf("Gia tien can thanh toan:%.3f", tongTien);
+}
+
+void bai4(){
+    int x;
+    double price;
+    printf("Nhập vào số (kwh) điện sử dụng:");
+    scanf("%d", &x);
+    clearInputBuffer();
+    if(x<=50 && x>0){
+        price=x*1.678;
+    } else if(x<=100){
+        price=50*1.678;
+        price+=(x-50)*1.734;
+    } else if(x<=200){
+        price=50*1.678;
+        price+=50*1.734;
+        price+=(x-100)*2.014;
+    } else if(x<=300){
+        price=50*1.678;
+        price+=50*1.734;
+        price+=100*2.014;
+        price+=(x-200)*2.536;
+    } else if(x<=400){
+        price=50*1.678;
+        price+=50*1.734;
+        price+=100*2.014;
+        price+=100*2.536;
+        price+=(x-300)*2.834;
+    } else {
+        price=50*1.678;
+        price+=50*1.734;
+        price+=100*2.014;
+        price+=100*2.536;
+        price+=100*2.834;
+        price+=(x-400)*2.927;
+    }
 }
