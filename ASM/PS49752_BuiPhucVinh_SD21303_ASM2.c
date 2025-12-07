@@ -10,6 +10,8 @@ void bai1();
 void test();
 // B2: Tìm Ước số chung và bội số chung của 2 số
 void bai2();
+// B3: Chương trình tính tiền cho quán Karaoke
+void bai3();
 
 int main()
 {
@@ -28,10 +30,11 @@ int main()
             break;
         case 2:
             bai2();
-            printf("\nNhap vao 2 so nguyen: ");
+            //printf("\nNhap vao 2 so nguyen: ");
             break;
         case 3:
-            printf("\nNhap vao so gio hat: ");
+            bai3();
+            //printf("\nNhap vao so gio hat: ");
             break;
         case 4:
             printf("\nNhap vao so kwh tieu thu: ");
@@ -198,4 +201,28 @@ void bai2()
     printf("Uoc so chung lon nhat cua %d & %d: %d\n", x, y, gcd);
     lcm = (x * y) / gcd;
     printf("Boi so chung nho nhat cua %d & %d: %d\n", x, y, lcm);
+}
+
+void bai3(){
+    int x, y, gia=150000;
+    double tongTien;
+    do{
+        printf("Nhập vào giờ bắt đầu x, giờ kết thúc y (Từ 12h->23h):");
+        scanf("%d %d", &x, &y);
+        clearInputBuffer();
+        if (x>y || x<12 || x>23 || y<12 || y>23){
+            printf("Nhập sai rồi bạn ơi. Nhập lại đi.\n");
+        }
+    } while (x>y || x<12 || x>23 || y<12 || y>23);
+    int tongGio=y-x;
+    if (tongGio<=3){
+        tongTien=tongGio*gia;
+    } else if (tongGio>3){
+        tongTien=3*gia;
+        tongTien+=(tongGio-3)*(gia*0.7);
+    }
+    if(x>=14 && x<=17){
+        tongTien=tongTien*0.9;
+    }
+    printf("Gia tien can thanh toan:%.3f", tongTien);
 }
