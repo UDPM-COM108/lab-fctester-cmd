@@ -1,0 +1,154 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
+
+void menu();
+void clearInputBuffer();
+// B1: Kiểm tra số nguyên
+void bai1();
+void test();
+
+int main()
+{
+    int choice;
+    do
+    {
+        menu();
+        scanf("%d", &choice);
+        getchar();
+        switch (choice)
+        {
+        case 1:
+            //test();
+            bai1();
+            printf("\nNhap vao so nguyen: ");
+            break;
+        case 2:
+            printf("\nNhap vao 2 so nguyen: ");
+            break;
+        case 3:
+            printf("\nNhap vao so gio hat: ");
+            break;
+        case 4:
+            printf("\nNhap vao so kwh tieu thu: ");
+            break;
+        case 5:
+            printf("\nNhap vao so tien can doi: ");
+            break;
+        case 6:
+            printf("\nNhap vao so tien vay: ");
+            break;
+        case 7:
+            printf("\nNhap vao gia tri xe can mua: ");
+            break;
+        case 8:
+            printf("\nNhap vao so luong sinh vien: ");
+            break;
+        case 9:
+            printf("\nChao mung den voi game POLY-LOTT!");
+            break;
+        case 10:
+            printf("\nNhap vao phan so: ");
+            break;
+        case 0:
+            printf("\nBye bye!!!");
+            exit(0);
+            break;
+        default:
+            printf("\nLua chon khong hop le. ");
+            break;
+        }
+    } while (choice != 0);
+
+    return 0;
+}
+
+void menu()
+{
+    printf("\n_________________________________________");
+    printf("\n|WELCOME TO Bui Phuc Vinh Assigment     |");
+    printf("\n*****************************************");
+    printf("\n1. Kiêm tra số nguyên");
+    printf("\n2. Tìm Ước số chung & bội số chung của 2 số");
+    printf("\n3. Tính tiền cho quán Karaoke");
+    printf("\n4. Tính tiền điện");
+    printf("\n5. Chức năng đổi tiền");
+    printf("\n6. Tính lãi suất va ngân hàng vay trả góp");
+    printf("\n7. Vay tiền mua xe");
+    printf("\n8. Sắp xếp thông tin sinh viên");
+    printf("\n9. Game POLY-LOTT");
+    printf("\n10. Tính toán phân số");
+    printf("\n------------------------------");
+    printf("\n0. Thoát");
+    printf("\nNhap vao 1-10 de su dung chuong trinh: ");
+}
+
+void bai1()
+{
+    float x;
+    int flag = 0;
+    do
+    {
+        printf("Nhap so nguyen x:");
+        scanf("%f", &x);
+        clearInputBuffer();
+        if (x != ceil(x))
+        {
+            flag = 0;
+            printf("%.1f khong phai la so nguyen.\n", x);
+        }
+        else
+        {
+            flag = 1;
+            printf("%d la so nguyen.\n", (int)x);
+        }
+    } while (flag != 1);
+
+    if (x < 2)
+    {
+        printf("%d khong phai la so nguyen to.\n", x);
+    }
+    else
+    {
+        int c = 1;
+        for (int i = 2; i <= sqrt(x); i++)
+        {
+            if ((int)x % i == 0)
+            {
+                printf("%d khong phai la so nguyen to.\n", (int)x);
+                c = 0;
+                break;
+            }
+            if (c == 1)
+            {
+                printf("%d la so nguyen to.\n", (int)x);
+            }
+        }
+    }
+
+    // Kiem tra chinh phuong
+    if (x < 0)
+    {
+        printf("%d khong phai la so chinh phuong.\n");
+    }
+    else
+    {
+        int n = sqrt(x);
+        if (n * n == x)
+        {
+            printf("%d la so chinh phuong.\n", (int)x);
+        }
+        else
+        {
+            printf("%d khong phai la so chinh phuong.\n", (int)x);
+        }
+    }
+}
+
+void clearInputBuffer()
+{
+    int c;
+    while (c = getchar() != '\n' && c != EOF)
+        ;
+}
