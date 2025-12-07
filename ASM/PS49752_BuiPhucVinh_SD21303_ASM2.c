@@ -14,15 +14,17 @@ void bai2();
 void bai3();
 // B4: Tính tiền điện
 void bai4();
+// B5: Chức năng đổi tiền
+void bai5();
 
 int main()
 {
     int choice;
     do
     {
-        menu();
+        menu();       
         scanf("%d", &choice);
-        getchar();
+        clearInputBuffer();
         switch (choice)
         {
         case 1:
@@ -43,7 +45,8 @@ int main()
             //printf("\nNhap vao so kwh tieu thu: ");
             break;
         case 5:
-            printf("\nNhap vao so tien can doi: ");
+            bai5();
+            //printf("\nNhap vao so tien can doi: ");
             break;
         case 6:
             printf("\nNhap vao so tien vay: ");
@@ -258,5 +261,31 @@ void bai4(){
     } else {
         price=mucGia1+mucGia2+mucGia3+mucGia4+mucGia5;
         price+=(x-400)*2.927;
+    }
+}
+
+void bai5(){
+    int x, a[9]={500,200,100,50,20,10,5,2,1};
+    int remainder;
+    printf("Mệnh giá tiền gồm có: ");
+    for (int i=0; i<sizeof(a)/sizeof(int); i++){
+        printf("%d ", a[i]);
+    }
+    printf("\nNhập vào số tiền cần đổi: ");
+    scanf("%d", &x);
+    clearInputBuffer();
+    remainder=x;
+    while (remainder!=0){
+        int c;
+        printf("Các mệnh giá tiền được đổi ra: ");
+        for (int i=0; i<sizeof(a)/sizeof(int); i++){
+            if(remainder<a[i]){
+                continue;
+            } else if (remainder>a[i] || remainder==1) {
+                c=remainder/a[i];
+                remainder=remainder%a[i];
+                printf("%dx%d ", a[i], c);
+            }
+        }
     }
 }
