@@ -8,6 +8,8 @@ void clearInputBuffer();
 // B1: Kiểm tra số nguyên
 void bai1();
 void test();
+// B2: Tìm Ước số chung và bội số chung của 2 số
+void bai2();
 
 int main()
 {
@@ -20,11 +22,12 @@ int main()
         switch (choice)
         {
         case 1:
-            //test();
+            // test();
             bai1();
-            printf("\nNhap vao so nguyen: ");
+            // printf("\nNhap vao so nguyen: ");
             break;
         case 2:
+            bai2();
             printf("\nNhap vao 2 so nguyen: ");
             break;
         case 3:
@@ -151,4 +154,48 @@ void clearInputBuffer()
     int c;
     while (c = getchar() != '\n' && c != EOF)
         ;
+}
+
+void bai2()
+{
+    int x, y, min = 0, max = 0, gcd = 0, lcm = 0;
+    printf("Nhap x & y:");
+    scanf("%d %d", &x, &y);
+    clearInputBuffer();
+    if (x > y)
+    {
+        max = x;
+        min = y;
+    }
+    else if (x < y)
+    {
+        max = y;
+        min = x;
+    }
+    else
+    {
+        gcd = x;
+    }
+    if (gcd == 0)
+    {
+        /* Cach cu
+        for (int i = min; i > 0; i--)
+        {
+            if (x % i == 0 && y % i == 0)
+            {
+                gcd = i;
+                break;
+            }         
+        }*/
+        int a = x, b = y, tmp;
+        while (b!=0){
+            tmp=a%b;
+            a=b;
+            b=tmp;
+        }
+        gcd=a;
+    }
+    printf("Uoc so chung lon nhat cua %d & %d: %d\n", x, y, gcd);
+    lcm = (x * y) / gcd;
+    printf("Boi so chung nho nhat cua %d & %d: %d\n", x, y, lcm);
 }
