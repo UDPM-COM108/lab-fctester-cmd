@@ -233,35 +233,30 @@ void bai3(){
 void bai4(){
     int x;
     double price;
+    const double mucGia1=50*1.678;
+    const double mucGia2=50*1.734;
+    const double mucGia3=100*2.014;
+    const double mucGia4=100*2.536;
+    const double mucGia5=100*2.834;
     printf("Nhập vào số (kwh) điện sử dụng:");
     scanf("%d", &x);
     clearInputBuffer();
     if(x<=50 && x>0){
         price=x*1.678;
     } else if(x<=100){
-        price=50*1.678;
+        price=mucGia1;
         price+=(x-50)*1.734;
     } else if(x<=200){
-        price=50*1.678;
-        price+=50*1.734;
+        price=mucGia1+mucGia2;
         price+=(x-100)*2.014;
     } else if(x<=300){
-        price=50*1.678;
-        price+=50*1.734;
-        price+=100*2.014;
+        price=mucGia1+mucGia2+mucGia3;
         price+=(x-200)*2.536;
     } else if(x<=400){
-        price=50*1.678;
-        price+=50*1.734;
-        price+=100*2.014;
-        price+=100*2.536;
+        price=mucGia1+mucGia2+mucGia3+mucGia4;
         price+=(x-300)*2.834;
     } else {
-        price=50*1.678;
-        price+=50*1.734;
-        price+=100*2.014;
-        price+=100*2.536;
-        price+=100*2.834;
+        price=mucGia1+mucGia2+mucGia3+mucGia4+mucGia5;
         price+=(x-400)*2.927;
     }
 }
