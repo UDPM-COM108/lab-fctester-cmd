@@ -16,6 +16,12 @@ void bai3();
 void bai4();
 // B5: Chức năng đổi tiền
 void bai5();
+//
+void bai6();
+//
+void bai7();
+//
+void bai8();
 
 int main()
 {
@@ -49,7 +55,8 @@ int main()
             //printf("\nNhap vao so tien can doi: ");
             break;
         case 6:
-            printf("\nNhap vao so tien vay: ");
+            bai6();
+            //printf("\nNhap vao so tien vay: ");
             break;
         case 7:
             printf("\nNhap vao gia tri xe can mua: ");
@@ -288,4 +295,28 @@ void bai5(){
             }
         }
     }
+}
+
+void bai6(){
+    int soMuon, gocTra, laiTra, con_lai;
+    printf("Nhập số tiền muốn vay: ");
+    scanf("%d", &soMuon);
+    clearInputBuffer();
+    gocTra=soMuon/12;
+    con_lai=soMuon;
+    for (int i=1; i<=12; i++){
+        laiTra=con_lai*0.05;
+        con_lai-=gocTra;
+        printf("Ky han:%2d - Lai phai tra:%7d - Goc phai tra:%8d "
+         "So tien phai tra:%8d - So tien con lai:%9d\n", i, laiTra, gocTra, laiTra+gocTra, 
+        con_lai);
+    }
+}
+
+void bai7(){
+    
+}
+
+void bai8(){
+    
 }
