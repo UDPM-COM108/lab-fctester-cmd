@@ -2,9 +2,17 @@
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+
+struct Student{
+    char ho_ten[50];
+    float diem;
+    char hoc_luc[10];
+};
 
 void menu();
 void clearInputBuffer();
+int cmpDesc(const void *a, const void *b);
 // B1: Kiểm tra số nguyên
 void bai1();
 void test();
@@ -16,12 +24,16 @@ void bai3();
 void bai4();
 // B5: Chức năng đổi tiền
 void bai5();
-//
+// B6: Xây dựng chức năng tính lãi suất vay ngân hàng vay trả góp
 void bai6();
-//
+// B7: Xây dựng chương trình vay tiền mua xe
 void bai7();
-//
+// B8: Sắp xếp thông tin sinh viên
 void bai8();
+// B9: Xây dựng game FPOLY-LOTT (2/15)
+void bai9();
+// B10: Xây dựng chương trình tính toán phân số
+void bai10();
 
 int main()
 {
@@ -59,16 +71,20 @@ int main()
             //printf("\nNhap vao so tien vay: ");
             break;
         case 7:
-            printf("\nNhap vao gia tri xe can mua: ");
+            bai7();
+            //printf("\nNhap vao gia tri xe can mua: ");
             break;
         case 8:
-            printf("\nNhap vao so luong sinh vien: ");
+            bai8();
+            //printf("\nNhap vao so luong sinh vien: ");
             break;
         case 9:
             printf("\nChao mung den voi game POLY-LOTT!");
+            bai9();
             break;
         case 10:
-            printf("\nNhap vao phan so: ");
+            bai10();
+            //printf("\nNhap vao phan so: ");
             break;
         case 0:
             printf("\nBye bye!!!");
@@ -180,12 +196,12 @@ void bai2()
     clearInputBuffer();
     if (x > y)
     {
-        max = x;
+        //max = x;
         min = y;
     }
     else if (x < y)
     {
-        max = y;
+        //max = y;
         min = x;
     }
     else
@@ -314,9 +330,118 @@ void bai6(){
 }
 
 void bai7(){
-    
+    int borrowedPercentage=80, prePaidPercentage;
+    const int paymentPeriod = 24*12;
+    const long fixedAmount = 500000000;
+    long long prePaidAmount, remainedAmount;
+    double monthlyPercentage;
+    double monthlyInterest;
+    do
+    {
+        printf("Nhập vào số phần trăm vay tối đa:");
+        scanf("%d", &borrowedPercentage);
+        if(borrowedPercentage<1 || borrowedPercentage>99){
+            printf("Khong hop le. Nhap lai.");
+        }
+    } while (borrowedPercentage<1 || borrowedPercentage>99);
+    prePaidPercentage=100-borrowedPercentage;
+    //printf("Percentage:%d\n", prePaidPercentage);
+    prePaidAmount=fixedAmount*(prePaidPercentage/100.0);
+    //printf("Prepaid:%lld\n", prePaidAmount);
+    remainedAmount=fixedAmount-prePaidAmount;
+    //printf("Remain:%lld\n",remainedAmount);
+    monthlyPercentage=0.15/12;
+    //printf("%f\n", monthlyPercentage);
+    double tmp = pow((1+monthlyPercentage),paymentPeriod);
+    monthlyInterest=remainedAmount*(monthlyPercentage*tmp)/(tmp-1);
+    //printf("%f", monthlyInterest);
+    printf("So tien phai tra lan dau:%lld\n", prePaidAmount);
+    printf("So tien phai tra hang thang:%ld", (long)monthlyInterest);
 }
 
 void bai8(){
-    
+    int n=5;
+    struct Student std[5];
+    size_t size=sizeof(std)/sizeof(std[0]);
+    printf("Nhap thing tin cua %d sinh vien:\n", n);
+    for(int i=0; i<size;i++){
+        printf("Ho ten sv %d:", i+1);
+        fgets(std[i].ho_ten, sizeof(std[i].ho_ten), stdin);
+        std[i].ho_ten[strcspn(std[i].ho_ten, "\n")]='\0';
+        do
+        {           
+            printf("Diem cua sv %d:", i+1);
+            scanf("%f", &std[i].diem);
+            if (std[i].diem>10 || std[i].diem<0){
+                printf("Nhap sai roi. Lam lai di.\n");
+            } else {
+                if (std[i].diem>=9){
+                    strcpy(std[i].hoc_luc, "Xuat sac");
+                } else if (std[i].diem>=8) {
+                   strcpy(std[i].hoc_luc, "Gioi");
+                } else if (std[i].diem>=6.5) {
+                    strcpy(std[i].hoc_luc, "Kha");
+                } else if (std[i].diem>=5) {
+                    strcpy(std[i].hoc_luc, "Trung binh");
+                } else {
+                    strcpy(std[i].hoc_luc, "Yeu");
+                }
+            }
+            clearInputBuffer();
+        } while (std[i].diem>10 || std[i].diem<0);
+    }
+    qsort(std, n, sizeof(struct Student), cmpDesc);
+    for(int i=0; i<size;i++){
+
+        printf("HoTen:%15s  Diem:%2.1f  Hoc luc:%8s\n", 
+            std[i].ho_ten, std[i].diem, std[i].hoc_luc);
+    }
+}
+
+int cmpDesc(const void *a, const void *b){
+    const struct Student *s1 = (const struct Student *)a;
+    const struct Student *s2 = (const struct Student *)b;
+    if (s1->diem > s2->diem) return -1;
+    if (s1->diem < s2->diem) return 1;
+    return 0;
+}
+
+void bai9(){
+    int a, b, x, y;
+    int c=0;
+    srand(time(NULL));
+    do {    
+        a=rand() % 15 + 1;
+        b=rand() % 15 + 1;
+    } while (a==b);
+    printf("a:%d b:%d\n", a, b);
+    printf("Nhap 2 so ngau nhien tu 1-15:");
+    scanf("%d %d", &x, &y);
+    if (x==a || x==b) c++;
+    if (y==a || y==b) c++;
+    if(c==2){
+        printf("Chúc mừng bạn đã trúng giải nhất");
+    } else if (c==1){
+        printf("Chúc mừng bạn đã trúng giải nhì");
+    } else {
+        printf("Chúc bạn may mắn lần sau");
+    }
+}
+
+void bai10(){
+    int a1,b1,a2,b2;
+    //double s1,s2;
+    do
+    {
+        printf("\nNhap 2 so phan so a1/b1 a2/b2:");
+        scanf("%d/%d %d/%d", &a1,&b1,&a2,&b2);
+        //scanf("%d/%d", &a1,&b1);
+    } while (b1==0 || b2==0);
+    // s1=a1/b1;
+    // s2=a2/b2;
+    //printf("a/b: %d/%d", a1, b1);
+    printf("Tong: %d/%d\n", (a1*b2+a2*b2),(b1*b2));
+    printf("Hieu: %d/%d\n", (a1*b2-a2*b2),(b1*b2));
+    printf("Tich: %d/%d\n", a1*a2, b1*b2);
+    printf("Thuong: %d/%d\n", a1*b2,a2*b1);
 }
