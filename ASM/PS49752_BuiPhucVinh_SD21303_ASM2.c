@@ -140,6 +140,7 @@ void bai1()
         }
     } while (flag != 1);
 
+    //Kiem tra so nguye to
     if (x < 2)
     {
         printf("%d khong phai la so nguyen to.\n", x);
@@ -188,28 +189,20 @@ void clearInputBuffer()
         ;
 }
 
-void bai2()
-{
-    int x, y, min = 0, max = 0, gcd = 0, lcm = 0;
+void bai2() {
+    int x, y, min, gcd = 0, lcm = 0;
     printf("Nhap x & y:");
     scanf("%d %d", &x, &y);
     clearInputBuffer();
-    if (x > y)
-    {
-        //max = x;
+    if (x > y) {
         min = y;
     }
-    else if (x < y)
-    {
-        //max = y;
+    else if (x < y) {
         min = x;
-    }
-    else
-    {
+    } else {
         gcd = x;
     }
-    if (gcd == 0)
-    {
+    if (gcd == 0) {
         /* Cach cu
         for (int i = min; i > 0; i--)
         {
@@ -285,6 +278,7 @@ void bai4(){
         price=mucGia1+mucGia2+mucGia3+mucGia4+mucGia5;
         price+=(x-400)*2.927;
     }
+    printf("Số tiền cần phải trả:%f", price);
 }
 
 void bai5(){
@@ -336,8 +330,7 @@ void bai7(){
     long long prePaidAmount, remainedAmount;
     double monthlyPercentage;
     double monthlyInterest;
-    do
-    {
+    do {
         printf("Nhập vào số phần trăm vay tối đa:");
         scanf("%d", &borrowedPercentage);
         if(borrowedPercentage<1 || borrowedPercentage>99){
