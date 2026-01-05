@@ -2,6 +2,11 @@
 #include <stdlib.h>
 
 int sort_desc(const void *, const void *);
+void bai1();
+void bai2();
+void bai3();
+void bai4();
+//void declare2DArray();
 
 int main()
 {
@@ -72,10 +77,26 @@ int main()
 
     free(a);
     a = NULL;
-
     // BÀI 4: TÍNH BÌNH PHƯƠNG CÁC PHẦN TỬ TRONG MẢNG 2 CHIỀU
-    int rows = 3, columns = 3;
-    int b[3][3];
+    bai4();
+    return 0;
+}
+
+void bai4(){
+    
+    int rows, columns;
+    printf("Nhap so dong va hang cua mang 2 chieu:");
+    printf("%d %d", &rows, &columns);
+    int **b = malloc(rows * sizeof(int *));
+    if (b == NULL)
+    {
+        printf("Co van de khi gan kich thuc cho mang");
+        exit(1);
+    }
+    for (int i = 0; i < rows; i++){
+        b[i] = malloc(columns * sizeof(int));
+    }
+    //int b[3][3];
     printf("\nNhap cac phan tu cua mang 2 chieu b[%d][%d].", rows, columns);
     for (int i = 0; i < rows; i++)
     {
@@ -86,7 +107,7 @@ int main()
         }
     }
     printf("\nXuat mang binh phuong.\n");
-    tmp = 0;
+    int tmp = 0;
     for (int i = 0; i < rows; i++)
     {
         for (int j = 0; j < columns; j++)
@@ -103,6 +124,4 @@ int main()
             }
         }
     }
-    
-    return 0;
 }
